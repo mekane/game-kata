@@ -1,0 +1,97 @@
+<html>
+<head>
+    <title>Game Kata - Version 0</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .game {
+            font-family: Arial, sans-serif;
+        }
+
+        .map {
+            display: grid;
+            grid-template-columns: repeat(5, 44px);
+        }
+
+        .square {
+            border: 1px solid white;
+            background: #0c3;
+            height: 44px;
+            width: 44px;
+            padding: 4px;
+        }
+
+        .player {
+            border: 2px solid #ccc;
+            border-radius: 17px;
+            color: white;
+            height: 34px;
+            line-height: 32px;
+            text-align: center;
+            width: 34px;
+        }
+    </style>
+</head>
+<body>
+<div class="game">
+    <div class="map">
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square">
+            <div class="player">P</div>
+        </div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+    </div>
+</div>
+<script>
+    document.addEventListener('keyup', function (e) {
+        switch (e.key) {
+            case 'ArrowUp':
+                move('up');
+                e.preventDefault();
+                break;
+            case 'ArrowRight':
+                move('right');
+                e.preventDefault();
+                break;
+            case 'ArrowDown':
+                move('down');
+                e.preventDefault();
+                break;
+            case 'ArrowLeft':
+                move('left');
+                e.preventDefault();
+                break;
+        }
+    })
+
+    function move(direction) {
+        console.log('move ' + direction)
+    }
+</script>
+</body>
+</html>
+
