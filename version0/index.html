@@ -88,8 +88,29 @@
         }
     })
 
-    function move(direction) {
-        console.log('move ' + direction)
+    function move(movedir) {
+        let sqs = document.querySelectorAll('.square');
+        let psq = null;
+        let psqi = -1;
+        sqs.forEach((s, i) => {
+            if (s.querySelector('.player')) {
+                psq = s;
+                psqi = i;
+            }
+        })
+
+        let newsqi = psqi;
+        if (movedir === 'up')
+            newsqi -= 5;
+        if (movedir === 'down')
+            newsqi += 5;
+        if (movedir === 'right')
+            newsqi += 1;
+        if (movedir === 'left')
+            newsqi -= 1;
+
+        const newsq = sqs[newsqi];
+        newsq.appendChild(psq.removeChild(document.querySelector('.player')));
     }
 </script>
 </body>
