@@ -88,29 +88,29 @@
         }
     })
 
-    function move(movedir) {
-        let sqs = document.querySelectorAll('.square');
-        let psq = null;
-        let psqi = -1;
-        sqs.forEach((s, i) => {
+    function move(moveDir) {
+        let squares = document.querySelectorAll('.square');
+        let playerSquare = null;
+        let playerSquareIndex = -1;
+        squares.forEach((s, i) => {
             if (s.querySelector('.player')) {
-                psq = s;
-                psqi = i;
+                playerSquare = s;
+                playerSquareIndex = i;
             }
         })
 
-        let newsqi = psqi;
-        if (movedir === 'up')
+        let newsqi = playerSquareIndex;
+        if (moveDir === 'up')
             newsqi -= 5;
-        if (movedir === 'down')
+        if (moveDir === 'down')
             newsqi += 5;
-        if (movedir === 'right')
+        if (moveDir === 'right')
             newsqi += 1;
-        if (movedir === 'left')
+        if (moveDir === 'left')
             newsqi -= 1;
 
-        const newsq = sqs[newsqi];
-        newsq.appendChild(psq.removeChild(document.querySelector('.player')));
+        const newsq = squares[newsqi];
+        newsq.appendChild(playerSquare.removeChild(document.querySelector('.player')));
     }
 </script>
 </body>
