@@ -1,0 +1,123 @@
+<html>
+<head>
+    <title>Game Kata - Version 1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .game {
+            font-family: Arial, sans-serif;
+        }
+
+        .map {
+            display: grid;
+            grid-template-columns: repeat(5, 44px);
+        }
+
+        .square {
+            border: 1px solid white;
+            background: #0a3;
+            height: 44px;
+            width: 44px;
+            padding: 4px;
+        }
+
+        .square.wall {
+            background: #999;
+        }
+
+        .player {
+            background: #060;
+            border: 2px solid #ccc;
+            border-radius: 17px;
+            color: white;
+            height: 34px;
+            line-height: 32px;
+            text-align: center;
+            width: 34px;
+        }
+    </style>
+</head>
+<body>
+<div class="game">
+    <div class="map">
+    </div>
+</div>
+<script src="gameStateBundle.js"></script>
+<script>
+    const getState = window.gameState.getState;
+    const move = window.gameState.move;
+
+    const mapEl = document.querySelector('.map');
+    makeBoard();
+    updatePlayer();
+
+    document.addEventListener('keyup', function (e) {
+        switch (e.key) {
+            case 'ArrowUp':
+                move('up');
+                updatePlayer();
+                e.preventDefault();
+                break;
+            case 'ArrowRight':
+                move('right');
+                updatePlayer();
+                e.preventDefault();
+                break;
+            case 'ArrowDown':
+                move('down');
+                updatePlayer();
+                e.preventDefault();
+                break;
+            case 'ArrowLeft':
+                move('left');
+                updatePlayer();
+                e.preventDefault();
+                break;
+        }
+    })
+
+    function makeBoard() {
+        clearMap();
+        buildMap();
+
+        function clearMap() {
+            while (mapEl.firstChild)
+                mapEl.removeChild(mapEl.firstChild);
+        }
+
+        function buildMap() {
+            getState().map.forEach(row => {
+                row.forEach(squareDef => {
+                    const square = document.createElement('div');
+                    square.classList.add('square');
+                    if (squareDef.wall)
+                        square.classList.add('wall');
+                    mapEl.appendChild(square);
+                })
+            })
+        }
+    }
+
+    function updatePlayer() {
+        const player = getState().player;
+
+        const playerSquareIndex = gameState.coordinateToIndex(player.position.x, player.position.y)
+        const squares = mapEl.querySelectorAll('.square');
+        const playerSquare = squares[playerSquareIndex];
+
+        let playerEl = mapEl.querySelector('.player');
+        if (!playerEl) {
+            playerEl = document.createElement('div');
+            playerEl.classList.add('player');
+            playerEl.textContent = 'P';
+        }
+
+        playerEl.remove();
+        playerSquare.appendChild(playerEl);
+    }
+</script>
+</body>
+</html>
+
