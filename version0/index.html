@@ -17,13 +17,18 @@
 
         .square {
             border: 1px solid white;
-            background: #0c3;
+            background: #0a3;
             height: 44px;
             width: 44px;
             padding: 4px;
         }
 
+        .square.wall {
+            background: #999;
+        }
+
         .player {
+            background: #060;
             border: 2px solid #ccc;
             border-radius: 17px;
             color: white;
@@ -44,15 +49,15 @@
         <div class="square"></div>
         <div class="square"></div>
         <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
+        <div class="square wall"></div>
+        <div class="square wall"></div>
         <div class="square"></div>
         <div class="square"></div>
         <div class="square"></div>
         <div class="square">
             <div class="player">P</div>
         </div>
-        <div class="square"></div>
+        <div class="square wall"></div>
         <div class="square"></div>
         <div class="square"></div>
         <div class="square"></div>
@@ -109,8 +114,12 @@
         if (moveDir === 'left')
             newsqi -= 1;
 
-        const newsq = squares[newsqi];
-        newsq.appendChild(playerSquare.removeChild(document.querySelector('.player')));
+        const newSquare = squares[newsqi];
+
+        if (newSquare.classList.contains('wall'))
+            return;
+
+        newSquare.appendChild(playerSquare.removeChild(document.querySelector('.player')));
     }
 </script>
 </body>
