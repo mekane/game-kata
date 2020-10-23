@@ -23,7 +23,7 @@ export function coordinateToIndex(x, y) {
 
 export function getState() {
     return {
-        map: defaultMap,
+        map,
         player
     }
 }

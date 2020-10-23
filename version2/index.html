@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Game Kata - Version 1</title>
+    <title>Game Kata - Version 2</title>
     <style>
         * {
             box-sizing: border-box;
@@ -45,7 +45,9 @@
     </div>
 </div>
 <script type="module">
-    import {coordinateToIndex, getState, move, newGame} from '../gameState.js';
+    import {coordinateToIndex, getState, move, newGame} from './gameState.js';
+
+    newGame();
 
     const mapEl = document.querySelector('.map');
     makeBoard();

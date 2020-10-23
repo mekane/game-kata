@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -b */test/*.js"
+    "test": "mocha -b --experimental-modules */test/*.js"
   },
   "author": "",
   "license": "ISC",
