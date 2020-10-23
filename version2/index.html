@@ -44,10 +44,8 @@
     <div class="map">
     </div>
 </div>
-<script src="gameStateBundle.js"></script>
-<script>
-    const getState = window.gameState.getState;
-    const move = window.gameState.move;
+<script type="module">
+    import {coordinateToIndex, getState, move, newGame} from '../gameState.js';
 
     const mapEl = document.querySelector('.map');
     makeBoard();
@@ -103,7 +101,7 @@
     function updatePlayer() {
         const player = getState().player;
 
-        const playerSquareIndex = gameState.coordinateToIndex(player.position.x, player.position.y)
+        const playerSquareIndex = coordinateToIndex(player.position.x, player.position.y)
         const squares = mapEl.querySelectorAll('.square');
         const playerSquare = squares[playerSquareIndex];
 

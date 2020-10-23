@@ -15,20 +15,20 @@ let player = {
     }
 };
 
-function coordinateToIndex(x, y) {
+export function coordinateToIndex(x, y) {
     const mapWidth = defaultMap[0].length; //assuming map is rectangular
 
     return y * mapWidth + x;
 }
 
-function getState() {
+export function getState() {
     return {
         map: defaultMap,
         player
     }
 }
 
-function move(moveDir) {
+export function move(moveDir) {
     if (moveDir === 'up')
         player.position.y--;
     if (moveDir === 'down')
@@ -39,15 +39,8 @@ function move(moveDir) {
         player.position.x--;
 }
 
-function newGame(newMap = defaultMap, newPlayer) {
+export function newGame(newMap = defaultMap, newPlayer) {
     map = newMap;
     if (newPlayer)
         player = newPlayer;
-}
-
-module.exports = {
-    coordinateToIndex,
-    getState,
-    move,
-    newGame
 }

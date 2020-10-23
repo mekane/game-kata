@@ -1,6 +1,7 @@
-const expect = require('chai').expect;
+import chai from 'chai';
+const expect = chai.expect;
 
-const gameState = require('../gameState');
+import {coordinateToIndex, getState, move, newGame} from '../gameState.js';
 
 describe('Get State', () => {
     it('it is a function that returns an object', () => {
@@ -8,6 +9,6 @@ describe('Get State', () => {
             map: [],
             player: {}
         }
-        expect(gameState.getState()).to.equal(expectedState);
+        expect(getState()).to.equal(expectedState);
     })
 })
