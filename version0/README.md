@@ -3,27 +3,33 @@
 This version is all inline in a single HTML file. The view and the app state 
 are intertwined and user input events directly modify the view.
 
-## Kata / Exercise Tasks
+You are welcome to complete the enhancements found in the main README, especially
+if you want general practice with interactive web programming.
 
-   * Verify regular movement is bug free (can't move through walls, edge cases)
-   * Increase the board size to 7 x 7
-   * Add a monster or other content to a tile that also blocks movement
-   * Add movement points to the player and subtract one each time they move.
-     Prevent them from moving if they don't have any left.
-   * Add a square type similar to walls that doesn't block movement but instead
-     costs two move points. Prevent movement if they don't have at least 2 left.
-   * Add the ability to toggle an effect on the player that lets them ignore the
-     more costly square type while active.
+However, this version exists mainly as a starting point to illustrate bad design
+and lack of any software architecture. The real exercise here is to notice what is
+wrong with the code in version 0.
 
-   
-   
+Read the code and then answer the following questions:
+
 ## Questions
 
-   * How can we test this code / make it testable?
-   * What would need to happen if you wanted to use a non-rectangular board?
-   * What if I wanted to have two different maps with different tile types?
-   * What if I wanted to save and load games?
-   * What if I wanted to have an ascii-art console version and a mobile app 
-     version that shared the same game?
+   * What is wrong with the code in this version? 
+   * What is confusing or unclear? How could these parts be improved?
+   * How could we test this code / make it testable?
+   * If you were to make the board larger would this be easy or hard? Why?
    * How would we prevent the user from changing the game state using the web
      inspector?
+   * Over time as more features, tile types and player state get added, how will
+     this code change? What could we do to help keep it from getting super messy
+     and confusing?
+
+
+## Discussion
+Possible answers to the question of what is wrong with the code include:
+   * Game state is not cleanly represented and tracked - it is embedded in the view.
+   * There is no single source of authority on the game state, there is a mix of variables 
+     and state tracked in the markup. (i.e. the `move` function should not query the view
+     to find the current position of the player)
+   * The game logic depends on the view. Both for state and in terms of how it is represented.
+     Notice that the grid 
