@@ -30,6 +30,13 @@ Possible answers to the question of what is wrong with the code include:
    * Game state is not cleanly represented and tracked - it is embedded in the view.
    * There is no single source of authority on the game state, there is a mix of variables 
      and state tracked in the markup. (i.e. the `move` function should not query the view
-     to find the current position of the player)
+     to find the current position of the player). This makes it hard to figure out what
+     to change when we want to add a new feature, and makes it easy to miss something.
    * The game logic depends on the view. Both for state and in terms of how it is represented.
-     Notice that the grid 
+     Notice that the markup for the grid is just a single list of elements, not actually rows
+     and columns (due to the use of CSS Grid) so to find and modify the grid we need to use
+     an index rather than a pair of x,y coordinates. This is confusing for someone who
+     sees "grid" and expects to find traditional 2d coordinates. And it is an example of how
+     the view is determining the app logic, not the other way around.
+   * There is duplicated code and logic. The size of the grid, for example, is not just 
+     hard-coded but its size is also specified in multiple places.
