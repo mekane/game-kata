@@ -6,14 +6,18 @@ const defaultMap = [
     [{}, {}, {}, {}, {}],
 ];
 
-let map = [];
+let map = defaultMap;
 
-let player = {
-    position: {
-        x: 2,
-        y: 2
+let player = defaultPlayer();
+
+function defaultPlayer() {
+    return {
+        position: {
+            x: 2,
+            y: 2
+        }
     }
-};
+}
 
 export function coordinateToIndex(x, y) {
     const mapWidth = defaultMap[0].length; //assuming map is rectangular
@@ -39,8 +43,7 @@ export function move(moveDir) {
         player.position.x--;
 }
 
-export function newGame(newMap = defaultMap, newPlayer) {
+export function newGame(newMap = defaultMap, newPlayer = defaultPlayer()) {
     map = newMap;
-    if (newPlayer)
-        player = newPlayer;
+    player = newPlayer;
 }
