@@ -49,9 +49,3 @@ These tasks and additional features apply to any version:
      more costly square type while active.
 
 
-Questions
-   * What would need to happen if you wanted to use a non-rectangular board?
-   * What if I wanted to have two different maps with different tile types?
-   * What if I wanted to save and load games?
-   * What if I wanted to have an ascii-art console version and a mobile app 
-     version that shared the same game?
