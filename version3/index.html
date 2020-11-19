@@ -37,6 +37,11 @@
             text-align: center;
             width: 34px;
         }
+
+        .controls__load-game,
+        .controls__save-game {
+
+        }
     </style>
 </head>
 <body>
@@ -44,8 +49,13 @@
     <div class="map">
     </div>
 </div>
+<div class="controls">
+    <button type="button" class="controls__save-game">Save Game</button>
+    <button type="button" class="controls__load-game">Load Game</button>
+</div>
 <script type="module">
     import {coordinateToIndex, getState, move, newGame} from './gameState.js';
+    import {saveGame, loadGame} from './gamePersistence.js';
 
     newGame();
 
@@ -77,6 +87,18 @@
                 break;
         }
     })
+    document.querySelector('.controls__load-game').addEventListener('click', restoreGame);
+    document.querySelector('.controls__save-game').addEventListener('click', saveCurrentGame);
+
+    function saveCurrentGame(e) {
+        saveGame(getState())
+    }
+
+    function restoreGame(e) {
+        const newState = loadGame();
+        newGame(newState.map, newState.player);
+        updatePlayer();
+    }
 
     function makeBoard() {
         clearMap();
@@ -102,7 +124,6 @@
 
     function updatePlayer() {
         const player = getState().player;
-
         const playerSquareIndex = coordinateToIndex(player.position.x, player.position.y)
         const squares = mapEl.querySelectorAll('.square');
         const playerSquare = squares[playerSquareIndex];
