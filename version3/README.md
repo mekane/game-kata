@@ -19,7 +19,6 @@ it a bit further to make it support other storage options and be testable.
 
 ## Questions
 
-Questions
    * What would happen if we just went in and changed the code in the gamePersistence
      module to use LocalStorage? What would be the pros and cons of just doing that?
    * How would you unit test the persistence module if it were directly changed to
