@@ -40,12 +40,12 @@ These tasks and additional features apply to any version:
    * Verify regular movement is bug free (can't move through walls, edge cases)
    * Increase the board size to 7 x 7
    * Add a monster or other content to a tile that also blocks movement 
-     (note that walls use a class, the player is a child element. Use a child element for this exercise.)
+     (note that walls use a css class, the player is a child element of the square. Use another child element for the monster or item.)
    * Add movement points to the player and subtract one each time they move.
      Prevent them from moving if they don't have any left.
    * Add a square type similar to walls that doesn't block movement but instead
      costs two move points. Prevent movement if they don't have at least 2 left.
    * Add the ability to toggle an effect on the player that lets them ignore the
-     more costly square type while active.
+     additional movement cost above.
 
 
