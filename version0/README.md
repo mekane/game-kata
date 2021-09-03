@@ -14,7 +14,7 @@ Read the code and then answer the following questions:
 
 ## Questions
 
-   * What is wrong with the code in this version? 
+   * What stands out to you about how this code is organized?
    * What is confusing or unclear? How could these parts be improved?
    * How could we test this code / make it testable?
    * If you were to make the board larger would this be easy or hard? Why?
